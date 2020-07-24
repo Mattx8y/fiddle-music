@@ -12,9 +12,10 @@ jobs:
 
     runs-on: ubuntu-latest
     
+    env:
+      PTERODACTYL_TOKEN: ${{ secrets.PTERODACTYL_TOKEN }}
+    
     steps:
       - name: push
-        env:
-          PTERODACTYL_TOKEN: ${{ secrets.PTERODACTYL_TOKEN }}
         run: 'curl "https://pterodactyl.app/api/client/servers/<id>/power" -H "Authorization: Bearer $PTERODACTYL_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "signal": "restart" }'
 '
