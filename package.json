@@ -1,0 +1,23 @@
+{
+  "name": "fiddle-music",
+  "version": "1.0.0",
+  "description": "Fiddle Music Bot for Discord",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "bufferutil": "^4.0.1",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "erlpack": "github:discord/erlpack",
+    "ffmpeg-static": "^4.2.6",
+    "opusscript": "0.0.7",
+    "utf-8-validate": "^5.0.2",
+    "zlib-sync": "^0.1.7"
+  }
+}
