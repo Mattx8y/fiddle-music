@@ -17,4 +17,4 @@ jobs:
   
     
     steps:
-      - run: 'curl "https://iwillbanu.ml/api/client/servers/<id>/power" -H "Authorization: Bearer $PTERODACTYL_TOKEN" -H "Content-Type: application/json" -X POST -d "{ \"signal\": \"restart\" }"'
+      - run: 'curl "https://iwillbanu.ml/api/client/servers/d8309957/power" -H "Authorization: Bearer $PTERODACTYL_TOKEN" -H "Content-Type: application/json" -X POST -d "{ \"signal\": \"restart\" }"'
