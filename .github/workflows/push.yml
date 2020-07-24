@@ -1,20 +1,11 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Push to VPS
-
 on:
   push:
     branches: [ master ]
-
 env:
   PTERODACTYL_TOKEN: ${{ secrets.PTERODACTYL_TOKEN }}
-
 jobs:
   push:
-
     runs-on: ubuntu-latest
-  
-    
     steps:
       - run: 'curl "https://iwillbanu.ml/api/client/servers/d8309957/power" -H "Authorization: Bearer $PTERODACTYL_TOKEN" -H "Content-Type: application/json" -X POST -d "{ \"signal\": \"restart\" }"'
