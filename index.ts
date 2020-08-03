@@ -12,9 +12,9 @@ const client = new FiddleClient();
 client.once("ready", function() {
     readdirSync("./commands")
         .filter(file => file.endsWith(".js"))
-        .map(file => import(join("./commands", file)))
-        .forEach(async function(cmd: Promise<FiddleCommand>) {
-            let command = await cmd;
+        .map(file => import(join(__dirname, "commands", file)))
+        .forEach(async function(cmd: Promise<{default}>) {
+            let command: FiddleCommand = new ((await cmd).default)();
             client.commands.set(command.name, command);
         });
 
@@ -49,10 +49,10 @@ client.on("message", async function(message: FiddleMessage) {
 
     if (!message.content.startsWith(message.guild.prefix)) return;
 
-    let args = message.content.slice().split(/\s/g);
+    let args = message.content.slice(1).split(/\s/g);
     let commandName = args.shift();
 
-    if (client.commands.has(commandName)) client.commands.get(commandName).executor(message, args);
+    if (client.commands.has(commandName)) client.commands.get(commandName).executor(client, message, args);
 });
 
 client.login().catch(console.error);
