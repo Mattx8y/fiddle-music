@@ -20,6 +20,8 @@ export default class HelpCommand implements FiddleCommand {
             const command = client.commands.get(args[0]);
             embed.setTitle(message.guild.prefix + command.name);
             embed.setDescription(command.description);
+            embed.addField("Usage", command.usage, true);
+            embed.addField("Example", command.example, true);
         } else {
             embed.setColor("RED");
             embed.setTitle("Error");
